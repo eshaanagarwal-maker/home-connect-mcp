@@ -186,4 +186,10 @@ def set_setting(ha_id: str, setting_key: str, value: Any) -> str:
 
 
 if __name__ == "__main__":
-    mcp.run()
+    import os
+    if os.getenv("MCP_TRANSPORT") == "http":
+        mcp.settings.host = os.getenv("MCP_HTTP_HOST", "127.0.0.1")
+        mcp.settings.port = int(os.getenv("MCP_HTTP_PORT", "8000"))
+        mcp.run(transport="streamable-http")
+    else:
+        mcp.run()
