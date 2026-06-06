@@ -13,7 +13,7 @@ from typing import Any
 import httpx
 from dotenv import dotenv_values, set_key
 
-ENV_PATH = Path(__file__).parent / ".env"
+ENV_PATH = Path.home() / ".claude/.env"
 
 AUTH_URL = "https://api.home-connect.com/security/oauth/authorize"
 TOKEN_URL = "https://api.home-connect.com/security/oauth/token"
